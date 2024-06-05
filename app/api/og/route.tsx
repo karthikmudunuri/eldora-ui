@@ -15,7 +15,7 @@ const image = fetch(
   new URL("../../../assets/images/og-bg-2.jpg", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
-const logo = fetch(new URL("../../../app/icon.png", import.meta.url)).then(
+const logo = fetch(new URL("../../../app/favicon.ico", import.meta.url)).then(
   (res) => res.arrayBuffer(),
 );
 
