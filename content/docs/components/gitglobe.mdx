@@ -1,0 +1,102 @@
+---
+title: GitHub Globe
+date: 2024-06-05
+description: An autorotating, interactive, and highly performant globe made using WebGL.
+author: Karthikeyavarma
+published: true
+
+---
+
+## ⚠️ Warning
+
+> This globe has performance issues
+> See [here](https://www.npmjs.com/package/three-globe) for more details.
+
+<ComponentPreview name="gitglobe-demo" />
+
+<Steps>
+
+### Install util dependencies
+
+```bash
+npm i framer-motion clsx tailwind-merge
+```
+
+### Install Globe dependencies
+
+```bash
+npm i three three-globe @react-three/fiber @react-three/drei
+```
+
+### Add util file
+
+```typescript
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+### Copy the globe json
+
+[Download the globe.json file from this URL](https://gist.github.com/karthikmudunuri/7f7ecd2ae26abca4baf548bb77f35a3b) and paste it in data/globe.json.
+
+Copy and paste the following code into your project.
+
+
+```text
+components/eldoraui/globe.tsx
+```
+
+<ComponentSource name="gitglobe" />
+
+</Steps>
+
+## Props
+
+###  `GlobeConfig` Props
+
+| Prop                  | Type     | Description                                                                                  |
+|-----------------------|----------|----------------------------------------------------------------------------------------------|
+| `pointSize`           | `number` | Optional. Size of the points on the globe.                                                   |
+| `globeColor`          | `string` | Optional. Color of the globe.                                                                |
+| `showAtmosphere`      | `boolean`| Optional. Whether to show the atmosphere layer.                                              |
+| `atmosphereColor`     | `string` | Optional. Color of the atmosphere.                                                           |
+| `atmosphereAltitude`  | `number` | Optional. Altitude of the atmosphere layer.                                                  |
+| `emissive`            | `string` | Optional. Emissive color of the globe material.                                              |
+| `emissiveIntensity`   | `number` | Optional. Intensity of the emissive color.                                                   |
+| `shininess`           | `number` | Optional. Shininess of the globe material.                                                   |
+| `polygonColor`        | `string` | Optional. Color of the polygons on the globe.                                                |
+| `ambientLight`        | `string` | Optional. Color of the ambient light in the scene.                                           |
+| `directionalLeftLight`| `string` | Optional. Color of the directional light from the left.                                      |
+| `directionalTopLight` | `string` | Optional. Color of the directional light from the top.                                       |
+| `pointLight`          | `string` | Optional. Color of the point light in the scene.                                             |
+| `arcTime`             | `number` | Optional. Animation time for the arcs.                                                       |
+| `arcLength`           | `number` | Optional. Length of the dash in the arc animations.                                          |
+| `rings`               | `number` | Optional. Number of rings to display initially.                                              |
+| `maxRings`            | `number` | Optional. Maximum number of rings that can be displayed.                                     |
+| `initialPosition`     | `Object` | Optional. Initial position of the globe. Contains `lat` and `lng` fields.                    |
+| `autoRotate`          | `boolean`| Optional. Whether the globe should auto-rotate.                                              |
+| `autoRotateSpeed`     | `number` | Optional. Speed of the auto-rotation.                                                        |
+
+
+### `WorldProps` Props
+
+| Prop         | Type         | Description                                    |
+|--------------|--------------|------------------------------------------------|
+| `globeConfig`| `GlobeConfig`| Configuration options for the globe.           |
+| `data`       | `Position[]` | Array of positions to display arcs between.    |
+
+### `Position` Type Props
+
+| Prop      | Type   | Description                      |
+|-----------|--------|----------------------------------|
+| `order`   | number | Order of the arc.                |
+| `startLat`| number | Starting latitude of the arc.    |
+| `startLng`| number | Starting longitude of the arc.   |
+| `endLat`  | number | Ending latitude of the arc.      |
+| `endLng`  | number | Ending longitude of the arc.     |
+| `arcAlt`  | number | Altitude of the arc.             |
+| `color`   | string | Color of the arc.                |
