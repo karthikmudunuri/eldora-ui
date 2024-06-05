@@ -17,13 +17,13 @@ export function MainNav() {
     <div className="mr-4 hidden md:flex">
       <Link href="/" className="mr-6 flex items-center space-x-2">
       <div className="logo-container">
-      <span className="font-bold">{siteConfig.name}</span>
+    <img src="/m.png" alt="Logo" height={1000} width={5000} className="logo-image" />
     <style jsx>{`
       .logo-container {
         display: inline-block;
-        height: 30px;
+        height: 90px;
       }
-      .logo-span {
+      .logo-image {
         height: 100%;
         width: 200%;
         mask-image: linear-gradient(
@@ -36,7 +36,7 @@ export function MainNav() {
         mask-position: 0%;
         transition: mask-position 1s ease;
       }
-      .logo-container:hover .logo-span {
+      .logo-container:hover .logo-image {
         mask-position: 100%;
       }
     `}</style>
